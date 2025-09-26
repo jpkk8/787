@@ -72,7 +72,6 @@
       det *= pivotVal;
       log && log(`Опорный элемент (${col+1},${col+1}) = ${fmt(pivotVal)}`);
 
-      // eliminate
       for (let r=col+1; r<n; r++){
         const f = M[r][col] / pivotVal;
         if (Math.abs(f) < 1e-14) continue;
