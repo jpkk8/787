@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Детерминант — новая версия (светлая)</title>
+  <link rel="stylesheet" href="style1.css"/>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <h1>Детерминант матрицы</h1>
+      <p class="subtitle">Новая реализация · Метод Гаусса · 2–10</p>
+    </header>
+
+    <section class="card">
+      <div class="controls">
+        <label class="field">
+          <span class="label">Размер n×n</span>
+          <input id="size" type="number" min="2" max="10" value="3" />
+        </label>
+
+        <label class="field">
+          <span class="label">Точность (знаков)</span>
+          <input id="prec" type="number" min="0" max="12" value="6" />
+        </label>
+
+        <div class="field">
+          <span class="label">Опции</span>
+          <label class="check"><input id="showSteps" type="checkbox" checked /> Показывать шаги</label>
+          <label class="check"><input id="pivoting" type="checkbox" checked /> Частичный выбор главного элемента</label>
+        </div>
+
+        <div class="actions">
+          <button id="regen">Создать матрицу</button>
+          <button id="fillRand" class="alt">Случайная</button>
+          <button id="clear" class="alt">Очистить</button>
+        </div>
+      </div>
+
+      <div id="grid" class="grid" aria-label="Матрица ввода"></div>
+
+      <div class="actions actions--bottom">
+        <button id="solve" class="primary">Вычислить det(A)</button>
+        <button id="copy" class="alt" disabled>Копировать шаги</button>
+      </div>
+
+      <div id="result" class="result">
+        <div class="result__row"><span class="muted">det(A) = </span><output id="det">—</output></div>
+        <div class="result__row small muted">Приблизительно: <output id="detApprox">—</output></div>
+      </div>
+
+      <details id="stepsBox" class="steps">
+        <summary>Шаги метода Гаусса</summary>
+        <ol id="steps"></ol>
+      </details>
+
+      <p class="note">Важно: эта версия считает в обычных числах JavaScript (с плавающей точкой). Для больших/«кривых» чисел могут быть
+        небольшие погрешности. Для «строгой математики» используйте рациональную версию.</p>
+    </section>
+  </main>
+
+  <script src="pap.js"></script>
+</body>
+</html>
